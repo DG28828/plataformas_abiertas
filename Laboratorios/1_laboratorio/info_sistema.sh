@@ -34,3 +34,7 @@ echo " Informacion sobre el sistema operativo:"
 echo "    - `lsb_release -i` "
 echo "    - `lsb_release -r`"
 echo ""
+
+#Imprime el nombre del host del sistema
+echo " Host: `hostname`"
+echo ""
