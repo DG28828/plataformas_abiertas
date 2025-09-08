@@ -12,18 +12,18 @@ fi
 touch registro_ejecucion.log #Crea el archivo log para la ejecucion actual
 
 #Verificar usuario ROOT
-if [[ $EUID -ne 0 ]]; then #Verifica si el usuario actual no es root (si es root $EUID=0, si no es 1000)
-    echo "ERROR: El usuario actual no es el usuario root. Ejecute el script desde el usuario root"
-    echo "ERROR: El usuario actual no es el usuario root. Finalizando ejecución" >> registro_ejecucion.log
-    exit 2
-fi
+#if [[ $EUID -ne 0 ]]; then #Verifica si el usuario actual no es root (si es root $EUID=0, si no es 1000)
+#    echo "ERROR: El usuario actual no es el usuario root. Ejecute el script desde el usuario root"
+#    echo "`date` "ERROR: El usuario actual no es el usuario root. Finalizando ejecución" >> registro_ejecucion.log
+#    exit 2
+#fi
 
 #Verificar si la ruta al archivo existe
-if ![[ -e $ruta ]]; then
+if ! [[ -e $ruta ]]; then
     echo "ERROR: La ruta no existe"
-    echo "ERROR: La ruta no existe. Finalizando ejecución" >> registro_ejecucion.log
+    echo "`date` ERROR: La ruta no existe. Finalizando ejecución" >> registro_ejecucion.log
+    exit 2
 fi
-
 
 #Verificar si el grupo existe
 
