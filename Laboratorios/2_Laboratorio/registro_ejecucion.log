@@ -1,1 +1,5 @@
-Mon Sep  8 16:37:24 CST 2025 ERROR: La ruta no existe. Finalizando ejecución
+## Registro de ejecución del script ##
+Fecha de creación: mar  9 sep 08:50:31 CST 2025
+ 
+El grupo dgarroa existe. Información del grupo: dgarroa:x:1000:dgarroa
+El usuario dgarroa existe. Información del usuario: dgarroa:x:1000:1000:Danny,,,:/home/dgarroa:/bin/bash
