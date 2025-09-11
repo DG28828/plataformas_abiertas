@@ -15,16 +15,14 @@ echo "Fecha de creación: `date`" >> registro_ejecucion.log
 echo " " >> registro_ejecucion.log
 
 #Verificar usuario ROOT
-#if [[ $EUID -ne 0 ]]; then #Verifica si el usuario actual no es root (si es root $EUID=0, si no es 1000)
-#    echo "ERROR: El usuario actual no es el usuario root. Ejecute el script desde el usuario root"
-#    echo "`date` "ERROR: El usuario actual no es el usuario root. Finalizando ejecución"  | tee -a registro_ejecucion.log
-#    exit 2
-#fi
+if [[ $EUID -ne 0 ]]; then #Verifica si el usuario actual no es root (si es root $EUID=0, si no es 1000)
+    echo "ERROR: El usuario actual no es el usuario root. Finalizando ejecución"  | tee -a registro_ejecucion.log
+    exit 2
+fi
 
 #Verificar si la ruta al archivo existe
 if ! [[ -e $ruta ]]; then
-    echo "ERROR: La ruta no existe"
-    echo "`date` ERROR: La ruta no existe. Finalizando ejecución" | tee -a registro_ejecucion.log
+    echo "ERROR: La ruta no existe. Finalizando ejecución" | tee -a registro_ejecucion.log
     exit 2
 fi
 
@@ -46,8 +44,9 @@ if [[ $verificar_usuario = "" ]]; then
     sudo adduser $usuario | tee -a registro_ejecucion.log
 else
     echo "El usuario $usuario existe. Información del usuario: $verificar_usuario"  | tee -a registro_ejecucion.log
-    sudo usermod -a -G $grupo $usuario  | tee -a registro_ejecucion.log #Se agrega el usuario al grupo
 fi
+
+sudo usermod -a -G $grupo $usuario  | tee -a registro_ejecucion.log #Se agrega el usuario al grupo
 
 #Modificar pertenencia del archivo
 echo "Modificando pertenencia del archivo $ruta al usuario $usuario y el grupo $grupo"
