@@ -1,0 +1,7 @@
+#include <stdio.h>
+
+int main(){
+  int a=3,b=4;
+  int r = (a&1) ? b<<1 : b>>1;
+  printf("%d\n", r);
+}
