@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 int factorial (int n) {
-  int i=1;
-  while (n > 1) {
+  int i = 1;
+  while(n>1) {
     i = i * n;
-    int n = n - 1;
+    n = n - 1;
   }
   return i;
 }
