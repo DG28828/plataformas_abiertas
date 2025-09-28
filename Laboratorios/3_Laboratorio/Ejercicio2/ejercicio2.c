@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define SIZE 3
 
-int Es_cuadrado_magico(int matrix[SIZE][SIZE]) {
+void Es_cuadrado_magico(int matrix[SIZE][SIZE]) {
 
   // Se declaran las variables a utilizar
   int suma_filas[SIZE] = {0,0,0};     // Matriz para guardar sumas de las filas
@@ -51,11 +53,16 @@ int Es_cuadrado_magico(int matrix[SIZE][SIZE]) {
   else {
     es_magico = 0;
   }
-  
-  return es_magico;
+
+  if (es_magico == 1) {
+    printf("La matriz es cuadrado mágico \n");
+  }
+  else {
+    printf("La matriz no es un cuadrado mágico \n");
+  }
 }
 
-void print_matrix(int matrix[SIZE][SIZE]) {
+void imprimir_matriz(int matrix[SIZE][SIZE]) {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             printf("%4d ", matrix[i][j]);
@@ -64,6 +71,13 @@ void print_matrix(int matrix[SIZE][SIZE]) {
     } 
 }
 
+void crear_matriz_aleatoria(int mat_aleatoria[SIZE][SIZE]) {
+  for (int i=0; i<SIZE; i++) {
+    for (int j=0; j<SIZE; j++) {
+      mat_aleatoria[i][j] = rand() %10;
+    }
+  }
+}
 
 int main() {
   int matrix[SIZE][SIZE] = {
@@ -73,15 +87,15 @@ int main() {
   };
   
   printf("La matriz utilizada corresponde a: \n");
-  print_matrix(matrix);
-  int es_magico = Es_cuadrado_magico(matrix);
+  imprimir_matriz(matrix);
+  Es_cuadrado_magico(matrix);
 
-  if (es_magico == 1) {
-    printf("La matriz es cuadrado mágico \n");
-  }
-  else {
-    printf("La matriz no es un cuadrado mágico \n");
-  }  
+  int mat_aleatoria[SIZE][SIZE];
+  srand(time(NULL));
+  crear_matriz_aleatoria(mat_aleatoria);
+  imprimir_matriz(mat_aleatoria);
+  Es_cuadrado_magico(mat_aleatoria);
+    
   return 0;
 }
   
