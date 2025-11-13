@@ -71,6 +71,9 @@ static void activate (GtkApplication* app, gpointer user_data) {
     // Crear frame
     dataimport_frame = gtk_frame_new("Importación de datos");
 
+    // Propiedades del frame
+    gtk_frame_set_label_align(GTK_FRAME(dataimport_frame), 0.5, 0.5);
+
     // Contener
     gtk_container_add(GTK_CONTAINER(dataimport_frame), dataimport_grid);    // Contener grid en el frame
     gtk_grid_attach(GTK_GRID(window_grid), dataimport_frame, 0, 0, 1, 1);   //Contener frame en el grid principal
@@ -115,11 +118,14 @@ static void activate (GtkApplication* app, gpointer user_data) {
     //Crear plot area
     plot_area = gtk_drawing_area_new ();
 
-    // Propiedades
+    // Propiedades del area
     gtk_widget_set_size_request(plot_area, 1500, 600);                        // Tamaño
 
     // Crear frame
-    plot_frame = gtk_frame_new("Gráfica");
+    plot_frame = gtk_frame_new("Gráfica de los datos");
+
+    // Propiedades del frame
+    gtk_frame_set_label_align(GTK_FRAME(plot_frame), 0.5, 0.5);
     
     // Contener
     gtk_container_add(GTK_CONTAINER(plot_frame), plot_area);                  // Contener plot area en el frame
