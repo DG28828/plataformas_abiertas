@@ -7,6 +7,8 @@ static void activate (GtkApplication* app, gpointer user_data) {
     GtkWidget *grid;         // Grid (cuadricula base para contener otros widgets)
     GtkWidget *plot_area;    // Area para colocar la grafica
     GtkWidget *plot_frame;   // Marco para el area de la grafica
+    GtkWidget *dataimport_frame; // Marco para area de importacion de datos
+    GtkWidget *boton_visualizar; // Boton para visualizacion de datos
 
     
     // ***************  VENTANA PRINCIPAL ***************
@@ -35,7 +37,7 @@ static void activate (GtkApplication* app, gpointer user_data) {
     // (AUXILIAR, etiqueta al grid para visualizarlo)
     for (int i = 0; i < 3; i++) {
 	for (int j = 0; j < 4; j++) {
-	    GtkWidget *label = gtk_label_new("Espacio");
+	    GtkWidget *label = gtk_label_new(" ");
 	    gtk_grid_attach(GTK_GRID(grid), label, j, i, 1, 1);
 	}
     }
@@ -66,6 +68,12 @@ static void activate (GtkApplication* app, gpointer user_data) {
 
     // Contener el frame en el grid
     gtk_grid_attach(GTK_GRID(grid), plot_frame, 0, 2, 4, 1);
+
+    // *************** BOTON VISUALIZACION ***************
+    // Crear boton
+    boton_visualizar = gtk_button_new_with_label ("Visualizar");
+    //g_signal_connect (boton_visualizar, "clicked", G_CALLBACK (fun_visualizar), NULL);
+    gtk_grid_attach(GTK_GRID(grid), boton_visualizar, 3, 1, 1, 1);
   
     // ***************  MOSTRAR RESULTADO  ***************
     gtk_widget_show_all (window);
