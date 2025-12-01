@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define NAME_LENGTH 50
+
+typedef struct Estudiante {
+    int id;
+    char nombre[NAME_LENGTH];
+    float promedio;
+} Estudiante;
+
+int main() {
+    return 0;
+}
